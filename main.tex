@@ -1,0 +1,277 @@
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[
+    ignoreheadfoot, 
+    top=1.5 cm, 
+    bottom=1.5 cm, 
+    left=1.5 cm, 
+    right=1.5 cm, 
+    footskip=1.0 cm, 
+]{geometry} 
+\usepackage[explicit]{titlesec} 
+\usepackage{tabularx} 
+\usepackage{array} 
+\usepackage[dvipsnames]{xcolor} 
+\definecolor{primaryColor}{RGB}{18, 78, 102} 
+\usepackage{enumitem} 
+\usepackage{fontawesome5} 
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Matthew Y. Li's Resume},
+    pdfauthor={Matthew Y. Li},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} 
+\usepackage[pscoord]{eso-pic} 
+\usepackage{calc} 
+\usepackage{bookmark} 
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol} 
+\usepackage{ifthen} 
+\usepackage{needspace}
+\usepackage{iftex}
+\usepackage[none]{hyphenat}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage[default, type1]{sourcesanspro} 
+
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0} 
+\setlength{\parindent}{0pt} 
+\setlength{\topskip}{0pt} 
+\setlength{\columnsep}{0.15cm}
+
+\titleformat{\section}{
+    \needspace{4\baselineskip}
+    \Large\color{primaryColor}
+}{
+}{
+}{
+    \textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}
+}[]
+
+\titlespacing{\section}{
+    -1pt
+}{
+    0.3 cm
+}{
+    0.2 cm
+}
+
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} 
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{1 cm, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+\let\hrefWithoutArrow\href
+
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \begin{header}
+        \fontsize{30 pt}{30 pt}
+        \textbf{Matthew Y. Li}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\footnotesize\faMapMarker*}\hspace*{0.13cm}NJ / NY}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:matt.li.1003@gmail.com}{{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}matt.li.1003@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+1-732-822-8420}{{\footnotesize\faPhone*}\hspace*{0.13cm}1 (732) 822 8420}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://mattspersonalportfolio.netlify.app/}{{\footnotesize\faLink}\hspace*{0.13cm}Portfolio}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/matthew-li-644b4a205/}{{\footnotesize\faLinkedinIn}\hspace*{0.13cm}LinkedIn}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/mattli1003}{{\footnotesize\faGithub}\hspace*{0.13cm}GitHub}}%
+    \end{header}
+
+    \section{About}
+
+        \begin{onecolentry}
+            Hello! I am a software developer with a passion for computer science, data analytics, and marketing. I chose this career path because it allows me to create impactful solutions that drive meaningful change. My experiences revolve around creating engaging interfaces, AI programs, and data-driven strategies, and I am continuously learning and expanding my skill set.
+
+
+        \end{onecolentry}
+
+    \section{Education}
+
+        \begin{twocolentry}{
+            Sept 2021 – May 2025
+
+            \vspace{0.1 cm}
+            
+            \text{GPA: 3.50}
+        }
+            \textbf{Rutgers University - New Brunswick}
+
+            \vspace{0.1 cm}
+            
+            \text{B.A., Computer Science; Business Administration (minor)}
+            % \textbf{Coursework:} Intro to Artificial Intelligence, Computer Algorithms, Data Management for Data Science, Intro to Data Science, Operations Management, Intro to Marketing 
+            
+        \end{twocolentry}
+
+    \section{Languages/Technology}
+
+        \begin{onecolentry}
+            \textbf{Languages:} Python, Java, C, HTML, CSS, JavaScript, SQL
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{Technologies:} React, Figma, JSON, Pandas, Overleaf, Power BI, Excel
+        \end{onecolentry}
+
+    \section{Experience}
+
+        \begin{twocolentry}{
+        May 2023 – Aug 2023
+        }
+            \textbf{BASF} | \textit{AI Research \& Data Science Intern} – Iselin, NJ
+            \begin{highlights}
+                \item Spearheaded the electron microscopy imaging analysis of 1000+ captured images of fluid catalytic cracking catalysts, providing valuable data and ensuring precise evaluation
+                \item Developed a Python program for image processing by masking all 1000+ images in a dataset and generating histograms to visualize and quantify the labeled data
+                \item Reduced team's weekly workload of 40+ hours to mere minutes by collecting and utilizing data to train the YOLO object-detection AI model, enhancing efficiency and productivity
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+        May 2022 – Aug 2022
+        }
+            \textbf{BASF} | \textit{Marketing \& Intellectual Property Intern} – Iselin, NJ
+            \begin{highlights}
+                \item Built an EBIT Calculator to automate benchmarking of competitor profitability and cost margins, enabling more efficient monthly evaluations and streamlining client pricing analysis
+                \item Developed a comprehensive Power BI model to visualize multi-year internal and competitive data on a dashboard, supporting strategic decision-making for marketing leadership
+                \item Compiled \& centralized 5+ years of competitor patent filings into a living knowledge database
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+        May 2022 – Aug 2024
+        }
+            \textbf{Rutgers OIT} | \textit{IT Consultant} – New Brunswick, NJ
+            \begin{highlights}
+                \item Mentored Level 1 consultants, providing training and guidance to resolve hardware and software issues with a 95\% first-call resolution rate, ensuring high-quality support
+                \item Streamlined IT support processes by enhancing the knowledge base, reducing the average resolution time by 20\% and improving team efficiency and service quality
+            \end{highlights}
+        \end{twocolentry}
+        
+    \section{Projects}
+
+        \begin{twocolentry}{
+            July 2024 – August 2024
+        }
+            \textbf{Music Recommender System} | Python, Spotify API, Streamlit – \href{https://github.com/mattli1003/music-recommender}{GitHub}
+            \begin{highlights}
+                \item Recognized the challenge of improving music discovery beyond Spotify's limited playlist recommendations, which often provide only a small number of curated songs 
+               \item Developed an interactive app using Streamlit and the Spotify API, allowing users to input an unlimited number of recommendations based on a song's artist, genre, or BPM
+                \item Delivered a scalable solution showcasing how APIs can overcome platform limitations to create a richer, more personalized music discovery experience
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            
+        }
+            \textbf{Personal Portfolio} | React, CSS, JavaScript, HTML – \href{https://github.com/mattli1003/personal-portfolio}{GitHub}
+            \begin{highlights} 
+                \item Developed a modern portfolio using React to showcase my web development and design skills, highlighting past projects and experiences through a visually engaging interface
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+\end{document}
